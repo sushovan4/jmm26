@@ -363,7 +363,7 @@ If $\mathcal S\subset \mathbb R^N$ and $d_H(\mathcal G,\mathcal S)<\varepsilon/1
 
 :::{.column width="70%"}
 - <green>Geometric reconstruction</green>: entails constructing <red>$\hat{\mathcal G}\subset\mathbb R^N$</red> from samples so that 
-    - $\hat{\mathcal G}\simeq \mathcal G$ & $d_H(\hat{\mathcal G}, \mathcal S)$ is small
+    - $\hat{\mathcal G}\simeq \mathcal G$ & $d_H(\hat{\mathcal G}, \mathcal G)$ is small
 
 - Vietoris--Rips complexes are <red>abstract</red>, hence contain only topological information
 - A good candidate for $\hat{\mathcal G}$ is the *shadow* of a topologically-faithful Vietoris--Rips.
