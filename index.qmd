@@ -3,8 +3,8 @@ title: "<span class='pref'>Vietoris--Rips Shadow for</span>Geometric Graph Recon
 title-slide-attributes: 
   data-background-image: "drawing.png"
   data-background-opacity: "0.3"
-subtitle: <green>Fall Workshop on Computational Geometry, 2025</green>
-author: "<b>Sushovan Majhi</b>, *George Washington University, DC*<br/> <green>Joint work</green> with Atish Mitra & Rafal Komendarczyk"
+subtitle: <green>Joint Math Meetings, 2026</green>
+author: "<b>Sushovan Majhi</b>, *George Washington University, DC*<br/> <green>Joint work</green> with Kazuhiro Kawamura, Atish Mitra"
 fig-cap-location: bottom
 callout-icon: false
 format: 
@@ -21,24 +21,9 @@ editor:
 html-math-method: mathml
 ---
 
-## The Problem of Shape Reconstruction {.smaller}
+# The Problem of <green>Shape Reconstruction</green>
 
-- <green>**Shape**</green>: A *Shape* is modeled as a metric space
-  - <gray>Abstract & Euclidean Riemannian manifolds</gray> [@MajhiLatschev]
-  - <gray>general metric *curvature* spaces</gray> [@2406.04259]
-  - <gray>abstract metric graphs</gray> [@Majhi2023]
-  - *embedded* metric graph ($\mathcal G\subset\mathbb R^N$)
-
-- <green>**Sample**</green>: A *finite* $\mathcal S\subset\mathbb R^N$ with small <green>Hausdorff</green> distance $d_{\mathrm H}(\mathcal G, \mathcal S)$
-   
-- <green>**Goal**</green>: Infer the topology of $\mathcal G$ from $\mathcal S$.
-    - <gray>Estimate only the Betti numbers---number of connected components, cycles, voids, etc---of $\mathcal G$</gray>
-
-    - <green>construct</green> a topological space $\hat{\mathcal G}$ (e.g. Vietoris--Rips) from $\mathcal S$ so that
-      - $\hat{\mathcal G}$ is homotopy equivalent to $\mathcal G$ (<green>topological</green> reconstruction)
-      - $\hat{\mathcal G}\subset\mathbb R^N$ and $d_{\mathrm H}(\hat{\mathcal G}, \mathcal S)$ small (<green>geometric</green> reconstruction)
-  
-## The Vietoris--Rips Complex {.smaller}
+## {.smaller}
 
 ```{ojs}
 //| panel: sidebar
@@ -244,6 +229,27 @@ drawRips = function (svg, simplices) {
   return svg;
 }
 ```
+
+
+
+## {.smaller}
+- <green>**Shape**</green>: A *Shape* is modeled as a metric space
+  - <gray>Abstract & Euclidean Riemannian manifolds</gray> [@MajhiLatschev]
+  - <gray>general metric *curvature* spaces</gray> [@2406.04259]
+  - <gray>abstract metric graphs</gray> [@Majhi2023]
+  - *embedded* metric graph ($\mathcal G\subset\mathbb R^N$)
+
+- <green>**Sample**</green>: A *finite* $\mathcal S\subset\mathbb R^N$ with small <green>Hausdorff</green> distance $d_{\mathrm H}(\mathcal G, \mathcal S)$
+   
+- <green>**Goal**</green>: Infer the topology of $\mathcal G$ from $\mathcal S$.
+    - <gray>Estimate only the Betti numbers---number of connected components, cycles, voids, etc---of $\mathcal G$</gray>
+
+    - <green>construct</green> a topological space $\hat{\mathcal G}$ (e.g. Vietoris--Rips) from $\mathcal S$ so that
+      - $\hat{\mathcal G}$ is homotopy equivalent to $\mathcal G$ (<green>topological</green> reconstruction)
+      - $\hat{\mathcal G}\subset\mathbb R^N$ and $d_{\mathrm H}(\hat{\mathcal G}, \mathcal S)$ small (<green>geometric</green> reconstruction)
+  
+## The Vietoris--Rips Complex {.smaller}
+
 
 ## The Vietoris--Rips Complex {.smaller}
 
