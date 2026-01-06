@@ -4,7 +4,7 @@ title-slide-attributes:
   data-background-image: "drawing.png"
   data-background-opacity: "0.3"
 subtitle: <green>Joint Math Meetings, 2026</green>
-author: "<b>Sushovan Majhi</b>, *George Washington University, DC*<br/> <green>Joint work</green> with Kazuhiro Kawamura, Atish Mitra"
+author: "<b>Sushovan Majhi</b>, *George Washington University, DC*"
 fig-cap-location: bottom
 callout-icon: false
 format: 
@@ -233,19 +233,16 @@ drawRips = function (svg, simplices) {
 
 ## M<green>&alpha;</green><green>&theta;</green>ema<green>&tau;&iota;</green>cal Formulation {.smaller}
 - <green>**Shape**</green>: A *Shape* is modeled as a metric space
-  - <gray>Abstract & Euclidean Riemannian manifolds</gray> [@MajhiLatschev]
-  - <gray>general metric *curvature* spaces</gray> [@2406.04259]
-  - <gray>abstract metric graphs</gray> [@Majhi2023]
-  - *embedded* metric graph ($\mathcal G\subset\mathbb R^N$)
+  - Abstract & Euclidean Riemannian manifolds
+  - abstract metric graphs
+  - <green>*embedded* metric graph ($\mathcal G\subset\mathbb R^N$)</green>
 
-- <green>**Sample**</green>: A *finite* $\mathcal S\subset\mathbb R^N$ with small <green>Hausdorff</green> distance $d_{\mathrm H}(\mathcal G, \mathcal S)$
+- <green>**Sample**</green>: A *finite* $S\subset\mathbb R^N$ with small <green>Hausdorff</green> distance $d_{\mathrm H}(\mathcal G, S)$
    
-- <green>**Goal**</green>: Infer the topology of $\mathcal G$ from $\mathcal S$.
-    - <gray>Estimate only the Betti numbers---number of connected components, cycles, voids, etc---of $\mathcal G$</gray>
-
-    - <green>construct</green> a topological space $\hat{\mathcal G}$ (e.g. Vietoris--Rips) from $\mathcal S$ so that
+- <green>**Goal**</green>: Infer the topology of $\mathcal G$ from $S$.
+    - <green>construct</green> a topological space $\hat{\mathcal G}$ (e.g. Vietoris--Rips) from $S$ so that
       - $\hat{\mathcal G}$ is homotopy equivalent to $\mathcal G$ (<green>topological</green> reconstruction)
-      - $\hat{\mathcal G}\subset\mathbb R^N$ and $d_{\mathrm H}(\hat{\mathcal G}, \mathcal S)$ small (<green>geometric</green> reconstruction)
+      - $\hat{\mathcal G}\subset\mathbb R^N$ and $d_{\mathrm H}(\hat{\mathcal G}, S)$ small (<green>geometric</green> reconstruction)
   
 # Vietoris<green>--</green>Rips Complexes {background-image="drawing.png" background-opacity="0.3"}
 
