@@ -33,7 +33,7 @@ viewof tol = Inputs.range([0, 100], { label: "Noise", value: 20, step: 1 })
 viewof scaleB = Inputs.range([0, 150], {
   step: 0.5,
   value: 0,
-  label: tex`r_{\mathcal S}`
+  label: tex`r_{S}`
 });
 viewof scaleA = Inputs.range([0, 150], {
   step: 0.5,
@@ -46,7 +46,7 @@ viewof scale = Inputs.range([0, 300], {
   label: tex`\beta`
 })
 viewof showShape = Inputs.toggle({ label: tex`{\mathcal G}`, value: false })
-viewof showSample = Inputs.toggle({ label: tex`{\mathcal S}`, value: false })
+viewof showSample = Inputs.toggle({ label: tex`{S}`, value: false })
 viewof showRips = Inputs.toggle({ label: 'Euclidean Vietoris–Rips', value: false })
 ```
 
@@ -281,50 +281,51 @@ drawRips = function (svg, simplices) {
 
 :::
 
-## Why Vietoris--Rips? {.smaller}
+## Why Does Vietoris--Rips Make Sense? {.smaller}
 
-- Computationally efficient 
+- Computationally efficient
 - Data dimension agnostic---unlike the Čech complex or $\alpha$-complex
 
 . . . 
 
 :::{.callout-tip icon="false"}
 ## @hausmann_1995
-For any closed Riemannian manifold $M$ and $0<\beta<\rho(M)$, the Vietoris--Rips complex $\mathcal{R}_\beta(M)$ is *homotopy equivalent* to $M$.
+For any closed Riemannian manifold $X$ and $0<\beta<\rho(X)$, the Vietoris--Rips complex $\mathcal{R}_\beta(X)$ is *homotopy equivalent* to $X$.
 :::
 
 . . .
 
 ::: {.callout-tip icon="false"}
 ## @latschev_2001
-Every closed Riemannian manifold $M$ has an <green>$\epsilon_0>0$</green> such that for any $0<\beta\leq\epsilon_0$ there exists some <red>$\delta>0$</red> so that for any sample $S$:
+Every closed Riemannian manifold $X$ has an <green>$\epsilon_0>0$</green> such that for any $0<\beta\leq\epsilon_0$ there exists some <red>$\delta>0$</red> so that for any sample $S$:
 $$
-d_{GH}(S,M)\leq\delta\implies \mathcal R_\beta(S)\simeq M.
+d_{GH}(S,X)\leq\delta\implies \mathcal R_\beta(S)\simeq X.
 $$
 :::
 
 
 ## Quantitative Latschev's Theorems
 
-- Metric Graphs [*J. Appl. & Comp. Top., @Majhi2023*]
-- Riemannian Manifolds [*SoCG'24, DCG, @MajhiLatschev*]
+- Metric Graphs [@Majhi2023]
+- Riemannian Manifolds [@MajhiLatschev]
 - $CAT(\kappa)$ Spaces [<code>ArXiv:2406.04259</code>, @2406.04259]
 
 
 ## Vietoris--Rips Complexes in Limits {.smaller}
 
-- $(X, d_X)$ metric space 
-- Indexed set: $\mathcal{S}\coloneqq\{S\subset X\ : \lvert S\rvert<\infty\}$ under set inclusion
-- For any scale $\beta\geq0$, a direct system of groups: 
-- $$\left\{\pi_m(\mathcal{R}_\beta(S))\to \pi_m(\mathcal{R}_\beta(T))\mid S,T\in\mathcal{S}, S\subset T\right\}$$
+- $(X, d_X)$ metric space and indexed set: $\mathbb{S}\coloneqq\{S\subset X\ : \lvert S\rvert<\infty\}$ under set inclusion
+- For any scale $\beta\geq0$, we have the direct system of groups
+$$\left\{\pi_m(\mathcal{R}_\beta(S))\to \pi_m(\mathcal{R}_\beta(T))\mid S,T\in\mathbb{S}, S\subset T\right\}$$
 
 . . .
 
 ::: {.callout-tip icon="false"}
 ## Hausmann in Limits [@Kawamura2026-ob]
+The direct limit:
 $$
-\lim_{S\in\mathcal{S}} \pi_m(\mathcal{R}_\beta(S)) \cong \pi_m(\mathcal{R}_\beta(X)).
+\pi_m(\mathcal{R}_\beta(\mathbb{S}))\coloneq\lim_{S\in\mathbb{S}}\pi_m(\mathcal{R}_\beta(S))\cong \pi_m(\mathcal{R}_\beta(X)).
 $$
+
 :::
 
 . . .
@@ -372,19 +373,19 @@ A *single* Vietoris--Rips complex <red>fails</red> to be topologically faithful,
 :::{.columns}
 :::{.column width="60%"}
 
-1. Fix a positive <green>$\varepsilon$</green>: <gray>proportional to $d_H(\mathcal S, \mathcal G)$</gray>;
+1. Fix a positive <green>$\varepsilon$</green>: <gray>proportional to $d_H(S, \mathcal G)$</gray>;
 
-2. Compute $\varepsilon$-neighborhood graph on $\mathcal S$: <green>$\mathcal R^{(1)}_\varepsilon(\mathcal S)$</green>;
+2. Compute $\varepsilon$-neighborhood graph on $S$: <green>$\mathcal R^{(1)}_\varepsilon(S)$</green>;
 
-3. Define <green>$d_{\mathcal S}^\varepsilon(a,b)$</green> to be the shortest path metric on $\mathcal R^{(1)}_\varepsilon(\mathcal S)$;
+3. Define <green>$d_{S}^\varepsilon(a,b)$</green> to be the shortest path metric on $\mathcal R^{(1)}_\varepsilon(S)$;
 
-4. Denote by <green>$\mathcal{R}_\beta^\varepsilon(S)$</green> the Vietoris--Rips complex of $\mathcal S$ under $d^\varepsilon_{\mathcal S}$.
+4. Denote by <green>$\mathcal{R}_\beta^\varepsilon(S)$</green> the Vietoris--Rips complex of $S$ under $d^\varepsilon_{S}$.
 
 :::
 
 
 :::{.column width="40%"}
-![$\varepsilon$-path Metric on $\mathcal S$](path-metric.png)
+![$\varepsilon$-path Metric on $S$](path-metric.png)
 :::
 
 :::
@@ -393,7 +394,7 @@ A *single* Vietoris--Rips complex <red>fails</red> to be topologically faithful,
 
 ::: {.callout-tip appearance="minimal"}
 ## Quasi-isometry [@Majhi2023]
-For a dense enough sample $\mathcal S$ of $\mathcal G$, $d^\varepsilon_{\mathcal S}$ is <green>quasi-isometric</green> to the <green>length metric</green> on $\mathcal G$.
+For a dense enough sample $S$ of $\mathcal G$, $d^\varepsilon_{S}$ is <green>quasi-isometric</green> to the <green>length metric</green> on $\mathcal G$.
 
 :::
 
@@ -431,7 +432,7 @@ For any $R>0$, $\delta^\varepsilon_R(\mathcal G)\to1$ as $\varepsilon\to0$, <gra
 Fix any $\xi\in\left(0,\frac{1}{4}\right)$.
 For any positive $\beta<\frac{\ell(\mathcal G)}{4}$, choose a positive $\varepsilon\leq\frac{\beta}{3}$ such that $\delta^{\varepsilon}_{\beta}(\mathcal G)\leq\frac{1+2\xi}{1+\xi}$.</gray> 
 
-If $\mathcal S\subset \mathbb R^N$ is such that $d_H(\mathcal G,\mathcal S)<\tfrac{1}{2}\xi\varepsilon$, then we have a homotopy equivalence <green>$\mathcal R^\varepsilon_\beta(\mathcal S)\simeq \mathcal G$</green>.
+If $S\subset \mathbb R^N$ is such that $d_H(\mathcal G,S)<\tfrac{1}{2}\xi\varepsilon$, then we have a homotopy equivalence <green>$\mathcal R^\varepsilon_\beta(S)\simeq \mathcal G$</green>.
 :::
 
 . . . 
@@ -441,7 +442,7 @@ Fixing <green>$\xi=1/6$</green>, we get a simpler but weaker statement.
 :::{.callout-tip .nonincremental appearance="minimal"}
 Let $\mathcal G \subset \mathbb{R}^N$ be a compact, connected metric graph.  
 For any positive $\beta<\ell(\mathcal G)/4$, choose a positive $\varepsilon\leq\beta/3$ such that $\delta^{\varepsilon}_{\beta}(\mathcal G)\leq8/7$. 
-If $\mathcal S\subset \mathbb R^N$ and $d_H(\mathcal G,\mathcal S)<\varepsilon/12$, then we have a homotopy equivalence $\mathcal R^\varepsilon_\beta(\mathcal S)\simeq\mathcal G$.
+If $S\subset \mathbb R^N$ and $d_H(\mathcal G,S)<\varepsilon/12$, then we have a homotopy equivalence $\mathcal R^\varepsilon_\beta(S)\simeq\mathcal G$.
 :::
 
 
@@ -485,7 +486,7 @@ If $\mathcal S\subset \mathbb R^N$ and $d_H(\mathcal G,\mathcal S)<\varepsilon/1
 
 :::{.column width="30%"}
 
-![$\mathrm{sh}(\mathcal K)$](shadow-2.png){width="80%" fig-align="center"}
+![$\mathcal S(\mathcal K)$](shadow-2.png){width="80%" fig-align="center"}
 
 :::
 
@@ -521,8 +522,8 @@ $$
 Fix any $\xi\in\left(0,\frac{1-\Theta}{6}\right)$.
 For any positive $\beta<\min\left\{\Delta(\mathcal G),\frac{\ell(\mathcal G)}{12}\right\}$, choose a positive $\varepsilon\leq\frac{(1-\Theta)(1-\Theta-6\xi)}{12}\beta$ such that $\delta^{\varepsilon}_{\beta}(\mathcal G)\leq\frac{1+2\xi}{1+\xi}$.</gray>
 
-If $\mathcal S\subset \mathbb R^2$ and $d_H(\mathcal G, \mathcal S)<\tfrac{1}{2}\xi\varepsilon$, then the shadow $sh(\mathcal R_\beta^\varepsilon(\mathcal S))$ is <green>homotopy equivalent</green> to $\mathcal G$. 
-Moreover, <green>$d_H(sh(\mathcal R_\beta^\varepsilon(\mathcal S)),\mathcal G)<\left(\beta+\frac{1}{2}\xi\varepsilon\right)$</green>. 
+If $S\subset \mathbb R^2$ and $d_H(\mathcal G, S)<\tfrac{1}{2}\xi\varepsilon$, then the shadow $\mathcal{S}(\mathcal R_\beta^\varepsilon(S))$ is <green>homotopy equivalent</green> to $\mathcal G$. 
+Moreover, <green>$d_H(\mathcal S(\mathcal R_\beta^\varepsilon(S)),\mathcal G)<\left(\beta+\frac{1}{2}\xi\varepsilon\right)$</green>. 
 :::
 
 - <green>$\Theta\in(0,1)$</green>: depends on the angles between tangents of edges at the graph vertices
