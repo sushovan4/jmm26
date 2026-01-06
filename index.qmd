@@ -21,7 +21,8 @@ editor:
 html-math-method: mathml
 ---
 
-# The Problem of <green>Shape Reconstruction</green>
+# The Problem of <green>Shape Reconstruction</green> {background-image="drawing.png" background-opacity="0.3"}
+
 
 ## {.smaller}
 
@@ -230,9 +231,7 @@ drawRips = function (svg, simplices) {
 }
 ```
 
-
-
-## {.smaller}
+## M<green>&alpha;</green><green>&theta;</green>ema<green>&tau;&iota;</green>cal Formulation {.smaller}
 - <green>**Shape**</green>: A *Shape* is modeled as a metric space
   - <gray>Abstract & Euclidean Riemannian manifolds</gray> [@MajhiLatschev]
   - <gray>general metric *curvature* spaces</gray> [@2406.04259]
@@ -248,14 +247,14 @@ drawRips = function (svg, simplices) {
       - $\hat{\mathcal G}$ is homotopy equivalent to $\mathcal G$ (<green>topological</green> reconstruction)
       - $\hat{\mathcal G}\subset\mathbb R^N$ and $d_{\mathrm H}(\hat{\mathcal G}, \mathcal S)$ small (<green>geometric</green> reconstruction)
   
-## The Vietoris--Rips Complex {.smaller}
+# Vietoris<green>--</green>Rips Complexes {background-image="drawing.png" background-opacity="0.3"}
 
 
-## The Vietoris--Rips Complex {.smaller}
+## Definition {.smaller}
 
 ::: {.columns}
 
-:::{.column}
+:::{.column width="65%"}
 
 - a metric space $(X,d_X)$
   
@@ -268,7 +267,95 @@ drawRips = function (svg, simplices) {
 
 :::
 
-::: {.column}
+::: {.column width="35%"}
+![](single-rips.png)
+
+:::
+
+:::
+
+. . . 
+
+::: {.callout-note appearance="minimal"}
+
+- <gray>Persistent homology considers all possible scales $\beta$ to make reasonable (only) <red>homological</red> inference</gray>
+
+- My goal is to provide a [window] of scales where <green>homotopy</green> properties are guaranteed.
+
+:::
+
+## Why Vietoris--Rips? {.smaller}
+
+- Computationally efficient 
+- Data dimension agnostic---unlike the Čech complex or $\alpha$-complex
+
+. . . 
+
+:::{.callout-tip icon="false"}
+## @hausmann_1995
+For any closed Riemannian manifold $M$ and $0<\beta<\rho(M)$, the Vietoris--Rips complex $\mathcal{R}_\beta(M)$ is *homotopy equivalent* to $M$.
+:::
+
+. . .
+
+::: {.callout-tip icon="false"}
+## @latschev_2001
+Every closed Riemannian manifold $M$ has an <green>$\epsilon_0>0$</green> such that for any $0<\beta\leq\epsilon_0$ there exists some <red>$\delta>0$</red> so that for any sample $S$:
+$$
+d_{GH}(S,M)\leq\delta\implies \mathcal R_\beta(S)\simeq M.
+$$
+:::
+
+
+## Quantitative Latschev's Theorems
+
+- Metric Graphs [*J. Appl. & Comp. Top., @Majhi2023*]
+- Riemannian Manifolds [*SoCG'24, DCG, @MajhiLatschev*]
+- $CAT(\kappa)$ Spaces [<code>ArXiv:2406.04259</code>, @2406.04259]
+
+
+## Vietoris--Rips Complexes in Limits {.smaller}
+
+- $(X, d_X)$ metric space 
+- Indexed set: $\mathcal{S}\coloneqq\{S\subset X\ : \lvert S\rvert<\infty\}$ under set inclusion
+- For any scale $\beta\geq0$, a direct system of groups: 
+- $$\left\{\pi_m(\mathcal{R}_\beta(S))\to \pi_m(\mathcal{R}_\beta(T))\mid S,T\in\mathcal{S}, S\subset T\right\}$$
+
+. . .
+
+::: {.callout-tip icon="false"}
+## Hausmann in Limits [@Kawamura2026-ob]
+$$
+\lim_{S\in\mathcal{S}} \pi_m(\mathcal{R}_\beta(S)) \cong \pi_m(\mathcal{R}_\beta(X)).
+$$
+:::
+
+. . .
+
+::: {.callout-tip icon="false"}
+## Latschev in Limits [@Kawamura2026-ob]
+Let $D\coloneqq\{ p_{k}\mid k=1,2,\ldots\}$ be a countable dense subset of a separable space $X$ and let $S_{k}\coloneq \{ p_{i}\mid i=1,\ldots, k\}$. 
+Then,
+$$\lim_{k}\pi_m(\mathcal{R}_\beta(S_{k})) \cong \pi_m(\mathcal{R}_\beta(X)).$$
+:::
+
+# Euclidean <green>Graph</green>  Reconstruction {background-image="drawing.png" background-opacity="0.3"}
+
+
+## Challenges {.smaller}
+
+
+::: {.columns}
+
+:::{.column width="60%"}
+
+- <red>Unknown Shape</red>: $\mathcal{G}\subset\mathbb R^N$ with geodesic metric $d_\mathcal{G}$
+- <green>Sample</green>: $S\subset\mathbb{R}^N$ with Euclidean metric $\|\bullet\|$
+- <gray>Density</gray>: $d_H(S,\mathcal{G})$ small or can be controlled
+- <green>Q</green>: Find a [range] of $\beta$ so that $\mathcal{R}_\beta(S)$ is homotopy equivalent to $\mathcal{G}$.
+:::
+
+::: {.column width="40%"}
 ![](single-rips.png)
 
 :::
@@ -278,7 +365,7 @@ drawRips = function (svg, simplices) {
 . . . 
 
 ::: {.callout-caution appearance="minimal"}
-
+## Bad News :-( 
 A *single* Vietoris--Rips complex <red>fails</red> to be topologically faithful, no matter the sample density 
 
 :::
@@ -407,20 +494,29 @@ If $\mathcal S\subset \mathbb R^N$ and $d_H(\mathcal G,\mathcal S)<\varepsilon/1
 
 :::
 
+## Vietoris--Rips Shadow in Limits {.smaller}
 
-## Graph Reconstruction via Shadow {.smaller}
+- $X\subset\mathbb R^N$ Euclidean metric space (Submanifolds, graphs; more generally ANR)
+- Denote $$\pi_{m}(\mathcal{S}_\beta(\mathbb{S})) \coloneq  \lim_{S\in \mathbb{S}} \pi_{m}(S(\mathcal{R}_\beta (S)))$$
+- We obtain an inverse system:
+$$
+\left\{ \pi_{m}(\mathcal{S}_{\gamma}(\mathbb{S})) \to \pi_{m}(\mathcal{S}_{\beta}(\mathbb{S})) \mid 0 < \gamma < \beta \right\}
+$$
+- The inverse limit group:
+$$
+\lim_{\beta} \pi_{m}(\mathcal{S}_{\beta}(\mathbb{S}))
+$$
 
-<!--
-::::{.callout-tip icon="false" .nonincremental style="font-size: 1em"}
-## Topological Reconstruction [@graph_shadow]
-Let $G \subset \mathbb{R}^N$ be a compact, connected metric graph.  
-Fix any $\xi\in\left(0,\frac{1}{4}\right)$.
-For any positive $\beta<\frac{\ell(G)}{4}$, choose a positive $\varepsilon\leq\frac{\beta}{3}$ such that $\delta^{\varepsilon}_{\beta}(G)\leq\frac{1+2\xi}{1+\xi}$. 
-If $S\subset \mathbb R^N$ is compact and $d_H(G,S)<\tfrac{1}{2}\xi\varepsilon$, then have a homotopy equivalence $\mathcal R^\varepsilon_\beta(S)\simeq G$.
+. . .
+
+::: {.callout-tip icon="false"}
+## Hausmann in Shadow Limits [@Kawamura2026-ob]
+$$
+\lim_{S\in\mathcal{S}} \pi_m(\mathcal{R}_\beta(S)) \cong \pi_m(X).
+$$
 :::
 
-. . . 
--->
+## Graph Reconstruction via Shadow {.smaller}
 
 ::::{.callout-tip icon="false" .nonincremental style="font-size: 1em"}
 ## Geometric Reconstruction [@graph_shadow]
@@ -443,6 +539,5 @@ Moreover, <green>$d_H(sh(\mathcal R_\beta^\varepsilon(\mathcal S)),\mathcal G)<\
 - Use <green>discrete Morse theory</green> to perform *organized collapses* of higher dimensional simplices of shadow for homeomorphic reconstruction
 
 - <green>Submanifold reconstruction</green> via Vietoris--Rips shadow
-    - Topological reconstruction already done in [@MajhiLatschev]
 
 ## References {background-image="drawing.png" background-opacity="0.3" style="font-size: 0.6em"}
