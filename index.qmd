@@ -510,7 +510,7 @@ $$
 ::: {.callout-tip icon="false"}
 ## Hausmann in Shadow Limits [@Kawamura2026-ob]
 $$
-\lim_{S\in\mathcal{S}} \pi_m(\mathcal{R}_\beta(S)) \cong \pi_m(X).
+\lim_{\beta} \pi_m(\mathcal{S}_\beta(\mathbb S)) \cong \pi_m(X).
 $$
 :::
 
